@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meridian Press — Magazines worth keeping</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EDEFF0;--card:#F7F8F8;--ink:#16201C;--mute:#5B6762;--line:#CBD1CE;--deep:#14342B;--brass:#A8802F;--on-deep:#EDEFF0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1613;--card:#17211D;--ink:#E8ECEA;--mute:#98A39E;--line:#2A3731;--deep:#0A211A;--brass:#D2AA5A}}
+:root[data-theme="dark"]{--bg:#0F1613;--card:#17211D;--ink:#E8ECEA;--mute:#98A39E;--line:#2A3731;--deep:#0A211A;--brass:#D2AA5A}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:'Bodoni Moda',Georgia,serif;font-weight:500;line-height:1.08;margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:82px}
+.logo{display:flex;align-items:center;text-decoration:none}
+.brand-mark{display:block;height:62px;width:auto;max-width:240px;object-fit:contain;background:#fff}
+nav{display:flex;gap:28px;align-items:center}
+nav a{text-decoration:none;font-weight:500;font-size:15px;color:var(--mute);padding:6px 0;border-bottom:2px solid transparent}
+nav a.on,nav a:hover{color:var(--ink);border-color:var(--brass)}
+.btn{display:inline-block;background:var(--deep);color:var(--on-deep);border:0;padding:14px 28px;font:600 15px Figtree,sans-serif;cursor:pointer;text-decoration:none;border-radius:2px;transition:background .2s}
+.btn:hover{background:var(--brass);color:#fff}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+.page{display:none}.page.on{display:block}
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;padding:72px 0 88px}
+.hero h1{font-size:clamp(46px,7vw,92px);letter-spacing:-.02em}
+.hero h1 em{font-style:italic;color:var(--brass)}
+.hero p{max-width:46ch;color:var(--mute);font-size:19px;margin:24px 0 32px}
+.acts{display:flex;gap:14px;flex-wrap:wrap}
+.stack{position:relative;height:460px}
+.stack .cover{position:absolute;width:240px;box-shadow:0 24px 50px -18px rgba(0,0,0,.45);transition:transform .35s}
+.stack .cover:nth-child(1){left:0;top:50px;transform:rotate(-7deg)}
+.stack .cover:nth-child(2){left:150px;top:0;z-index:2;transform:rotate(2deg)}
+.stack .cover:nth-child(3){left:300px;top:70px;transform:rotate(9deg)}
+.stack .cover:hover{transform:rotate(0) translateY(-10px);z-index:5}
+/* covers */
+.cover{aspect-ratio:3/4;padding:18px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;color:var(--fg)}
+/* image covers: show the whole picture, no cropping, no gaps */
+.cover.image{padding:0;aspect-ratio:auto;background:transparent;display:block}
+.cover.image img{display:block;width:100%;height:auto;object-fit:contain}
+.cover .nm{font:700 clamp(26px,3vw,38px)/.95 'Bodoni Moda',serif;letter-spacing:-.01em;overflow-wrap:anywhere}
+.cover .is{font-size:11px;font-weight:600;letter-spacing:.06em}
+.cover .ln{font:italic 500 15px/1.3 'Bodoni Moda',serif;max-width:14ch}
+.cover i{position:absolute;right:-30px;bottom:-30px;width:150px;height:150px;border-radius:50%;background:var(--ac);opacity:.9}
+.cover.v1 i{border-radius:0;transform:rotate(45deg);right:-50px}
+.cover.v2 i{width:200px;height:60px;border-radius:30px;right:-20px;bottom:70px;transform:rotate(-20deg)}
+.cover > *:not(i){position:relative;z-index:1}
+/* sections */
+section{padding:80px 0;border-top:1px solid var(--line)}
+.sh{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:44px;flex-wrap:wrap}
+.sh h2{font-size:clamp(34px,4.5vw,54px)}
+.sh p{color:var(--mute);max-width:42ch;margin:0}
+.feat{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:center}
+.feat h2{font-size:clamp(34px,4vw,50px);margin-bottom:18px}
+.feat p{color:var(--mute);max-width:52ch}
+.meta{display:flex;gap:36px;margin:28px 0;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.meta b{display:block;font:600 22px 'Bodoni Moda',serif}.meta span{font-size:14px;color:var(--mute)}
+.vals{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.vals h3{font-size:26px;margin-bottom:10px}.vals p{color:var(--mute);margin:0}
+.band{background:var(--deep);color:var(--on-deep);padding:88px 0;text-align:center;border:0}
+.band h2{font-size:clamp(34px,5vw,60px);max-width:16ch;margin:0 auto 18px}
+.band p{opacity:.8;max-width:46ch;margin:0 auto 32px}
+.band .btn{background:var(--brass);color:#fff}.band .btn:hover{background:var(--on-deep);color:var(--deep)}
+/* magazines page */
+.top{padding:72px 0 40px}.top h1{font-size:clamp(44px,6.5vw,84px)}.top p{color:var(--mute);max-width:50ch;margin-top:18px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.chip{background:none;border:1px solid var(--line);color:var(--ink);padding:9px 18px;font:500 14px Figtree,sans-serif;border-radius:40px;cursor:pointer}
+.chip.on,.chip:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 36px;padding-bottom:96px;align-items:start}
+.item .cover{box-shadow:0 18px 40px -20px rgba(0,0,0,.5);transition:transform .3s}
+.item:hover .cover{transform:translateY(-8px)}
+.item h3{font-size:24px;margin:20px 0 4px}
+.item .cat{font-size:14px;color:var(--brass);font-weight:600}
+.item p{color:var(--mute);font-size:15px;margin:8px 0 14px}
+.item .row{display:flex;justify-content:flex-start;align-items:center;border-top:1px solid var(--line);padding-top:14px}
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;padding-bottom:96px}
+.info div{padding:22px 0;border-top:1px solid var(--line)}
+.info b{font:600 22px 'Bodoni Moda',serif;display:block;margin-bottom:4px}
+.info span{color:var(--mute)}
+form{display:grid;gap:20px}
+label{display:grid;gap:8px;font-weight:600;font-size:15px}
+input,select,textarea{font:400 16px Figtree,sans-serif;padding:14px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:2px;width:100%}
+textarea{min-height:140px;resize:vertical}
+.ok{display:none;padding:18px;border:1px solid var(--brass);background:var(--card)}
+footer{background:var(--deep);color:var(--on-deep);padding:40px 0;font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;opacity:.85}
+.item .cover{display:flex}.item .cover.image{display:block}.item>a{display:block;text-decoration:none}
+.item h3 a{text-decoration:none}.item h3 a:hover{color:var(--brass)}
+.lk{font-weight:600;font-size:14px;text-decoration:none;border:1px solid var(--ink);padding:8px 16px;border-radius:2px;transition:background .2s}
+.lk:hover{background:var(--ink);color:var(--bg)}.lk.pri{background:var(--deep);color:var(--on-deep);border-color:var(--deep)}
+.item .row .b{display:flex;gap:8px}
+.back{display:inline-block;margin-top:36px;text-decoration:none;color:var(--mute);font-weight:500}.back:hover{color:var(--ink)}
+.det{display:grid;grid-template-columns:380px 1fr;gap:64px;padding:36px 0 72px;align-items:start}
+.det h1{font-size:clamp(44px,6vw,76px);margin:6px 0 18px}.det .cat{color:var(--brass);font-weight:600}
+.det .lead{font-size:19px;color:var(--mute);max-width:56ch}
+.det ul{padding-left:20px;margin:12px 0 32px}.det li{margin-bottom:6px}
+.det h3{font-size:24px}
+.reader{margin-top:32px;padding:28px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brass)}
+.reader[hidden]{display:none}.reader p{max-width:62ch;margin:12px 0 0}
+.more{font-size:34px;padding:48px 0 24px;border-top:1px solid var(--line)}
+.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:96px;align-items:start}
+.mini a{text-decoration:none}.mini h3{font-size:20px;margin-top:12px}
+.mini .cover{padding:12px}.mini .cover.image{padding:0}.mini .nm{font-size:clamp(18px,3vw,30px)}.mini .ln,.mini .is{display:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:900px){.det{grid-template-columns:1fr;gap:32px}.det .cover{max-width:320px}.meta{gap:24px;flex-wrap:wrap}.top{padding:48px 0 28px}section{padding:56px 0}.contact{padding-bottom:64px}}
+@media (max-width:560px){body{font-size:16px}.wrap{padding:0 18px}.brand-mark{height:48px;max-width:180px}nav a{font-size:14px}.hero{padding:44px 0 56px}.acts .btn,.det .btn{width:100%;text-align:center}.item .row{flex-wrap:wrap;gap:12px}.reader{padding:20px}.mini{gap:12px}}
+@media (max-width:900px){
+.hero,.feat,.contact{grid-template-columns:1fr;gap:40px}
+.vals{grid-template-columns:1fr;gap:32px}.grid{grid-template-columns:1fr 1fr}
+.stack{height:380px;overflow:hidden}.stack .cover{width:190px}.stack .cover:nth-child(2){left:110px}.stack .cover:nth-child(3){left:220px}
+.feat .cover{max-width:300px}}
+@media (max-width:560px){.grid{grid-template-columns:1fr}nav{gap:16px}.btn.sub{display:none}.bar{height:70px}}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+<a class="logo" href="#home" aria-label="TimesEN home"><img class="brand-mark" src="logo.png" alt="TimesEN — The Global Perspective"></a>
+<nav aria-label="Main"><a href="#home" data-p="home">Home</a><a href="#magazines" data-p="magazines">Magazines</a><a href="#contact" data-p="contact">Contact</a></nav>
+</div></header>
+
+<main>
+<div class="page" id="home">
+ <div class="wrap hero">
+  <div>
+   <h1>Magazines made to be <em>kept.</em></h1>
+   <p>Six independent titles on design, travel, science, business, food and culture. Written slowly, printed on heavy paper, delivered to your door.</p>
+   <div class="acts"><a class="btn" href="#magazines">Browse magazines</a><a class="btn ghost" href="#contact">Contact us</a></div>
+  </div>
+  <div class="stack" id="stack" aria-hidden="true"></div>
+ </div>
+ <section><div class="wrap feat">
+  <div id="featCover"></div>
+  <div>
+   <h2>This month: Aurelian, The Stone Issue</h2>
+   <p>Twelve architects on why the oldest building material still beats everything new. Includes a 40-page photo essay from quarries in Portugal, India and Vermont.</p>
+   <div class="meta"><div><b>148</b><span>Pages</span></div><div><b>Oct 2026</b><span>Issue 42</span></div><div><b>Monthly</b><span>Published</span></div></div>
+   <a class="btn" href="#magazine/aurelian">About Aurelian</a> <a class="btn ghost" href="#magazine/aurelian/read">Read a preview</a>
+  </div>
+ </div></section>
+ <section><div class="wrap">
+  <div class="sh"><h2>Why readers stay</h2><p>We publish fewer issues so every one has to earn its place on your shelf.</p></div>
+  <div class="vals">
+   <div><h3>Long reads, no filler</h3><p>Features run 3,000 words or more. We commission a story only when we have something new to say.</p></div>
+   <div><h3>Printed to last</h3><p>Sewn bindings, uncoated stock and soy-based inks. Our issues still open flat after ten years.</p></div>
+   <div><h3>Pay for the work</h3><p>Every writer, photographer and illustrator is paid within 30 days. No ads buy their way into a story.</p></div>
+  </div>
+ </div></section>
+ <section class="band"><div class="wrap">
+  <h2>Find the title that fits you</h2>
+  <p>Read about each magazine, preview an article, or write to us with a question.</p>
+  <a class="btn" href="#magazines">Explore magazines</a>
+ </div></section>
+</div>
+
+<div class="page" id="magazines">
+ <div class="wrap">
+  <div class="top"><h1>The collection</h1><p>Six titles, each with its own editor, voice and schedule. Pick one or collect them all.</p></div>
+  <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+  <div class="grid" id="grid"></div>
+ </div>
+</div>
+
+<div class="page" id="contact">
+ <div class="wrap">
+  <div class="top"><h1>Talk to us</h1><p>Ask about a magazine, order a back issue or pitch a story. A real person replies within two working days.</p></div>
+  <div class="contact">
+   <div class="info">
+    <div><b>Orders and questions</b><span>hello@meridianpress.example</span></div>
+    <div><b>Editorial pitches</b><span>editors@meridianpress.example</span></div>
+    <div><b>Studio</b><span>14 Harbour Lane, Mumbai 400001, India</span></div>
+    <div><b>Hours</b><span>Monday to Friday, 10:00 to 18:00 IST</span></div>
+   </div>
+   <form id="form">
+    <label>Your name<input name="n" required autocomplete="name"></label>
+    <label>Email address<input type="email" name="e" required autocomplete="email"></label>
+    <label>Topic<select name="t" id="topic"><option>General question</option><option>Order a back issue</option><option>Pitch a story</option></select></label>
+    <label>Message<textarea name="m" required></textarea></label>
+    <button class="btn" type="submit">Send message</button>
+    <div class="ok" id="ok" role="status">Thanks! Your message is sent. We will reply within two working days.</div>
+   </form>
+  </div>
+ </div>
+</div>
+<div class="page" id="detail"><div class="wrap" id="det"></div></div>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Meridian Press. All rights reserved.</span><span>Independent magazines, printed responsibly.</span></div></footer>
+
+<script>
+const M=[
+{n:"Aurelian",c:"Design",t:"Architecture and objects, slowly considered.",i:"Issue 42",bg:"#14342B",fg:"#EDEFF0",ac:"#A8802F",v:0,image:"1.jpeg",d:"Buildings, chairs and cities explained by the people who make them."},
+{n:"Northbound",c:"Travel",t:"Places worth the long way round.",i:"Autumn 2026",bg:"#1F3A5F",fg:"#F2F4F7",ac:"#E3B25B",v:2,d:"Slow journeys by rail, boat and foot, with maps drawn by hand."},
+{n:"Tidewater",c:"Science",t:"The living planet, in plain words.",i:"Vol. 9",bg:"#0E5A5C",fg:"#E9F4F2",ac:"#8FD0C0",v:1,image:"2.jpeg",d:"Oceans, forests and the researchers who spend years watching them."},
+{n:"Ledger",c:"Business",t:"How good companies really work.",i:"Issue 18",bg:"#4A2545",fg:"#F6EEF4",ac:"#D9A5C8",v:0,image:"3.jpeg",d:"Profiles and case studies from founders who chose to grow carefully."},
+{n:"Salt & Ember",c:"Food",t:"Recipes, markets and kitchens.",i:"Issue 27",bg:"#8C2A24",fg:"#FAEFE9",ac:"#F0B86E",v:1,d:"Home cooking from fifteen countries, tested until it never fails."},
+{n:"Paper Moon",c:"Culture",t:"Art, film and the people between.",i:"Issue 11",bg:"#D8D4EA",fg:"#1E1B33",ac:"#6B5FC4",v:2,d:"Interviews and essays on what artists are making and why."}
+];
+const slug=m=>m.n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const E={
+"Aurelian":{f:"Monthly",pg:148,l:"Aurelian looks at the buildings, furniture and cities that shape daily life. Each issue follows one theme through essays, interviews and long photo stories.",h:["Why stone never goes out of style","Twelve architects, one quarry","A chair that took nine years to design"],x:"In the quarry above Estremoz the workers still split blocks by hand. They say marble tells you where it wants to break. The architect beside me nodded as though this were ordinary news, then explained why her new library will use nothing else."},
+"Northbound":{f:"Quarterly",pg:132,l:"Northbound is for people who would rather arrive slowly. Expect night trains, small ferries, hand-drawn maps and honest notes on what each trip costs.",h:["Eleven days on the Trans-Siberian","The last ferry to the Faroe Islands","A walking guide to Kyoto's back lanes"],x:"The train leaves at 23:40 and nobody seems in a hurry. A woman across the aisle hands me tea without a word. By morning the plains have given way to birch forest, and I understand why people take the long way."},
+"Tidewater":{f:"Every two months",pg:120,l:"Tidewater explains the natural world without jargon. Scientists share what they have learned from years of watching one reef, one forest or one river.",h:["What a coral reef sounds like","The forest that remembers fire","Counting whales from a kayak"],x:"Marine biologist Ana Ruiz lowers a hydrophone over the side. At first there is only the hum of the boat. Then comes a crackle like frying oil: thousands of shrimp, all snapping at once, telling her the reef is alive."},
+"Ledger":{f:"Quarterly",pg:112,l:"Ledger profiles companies that chose steady growth over hype. Each issue breaks down how a real business makes decisions, with numbers shown.",h:["The bakery that opened 40 shops slowly","Why one founder refused funding","Reading a balance sheet in ten minutes"],x:"Ravi Menon keeps his whole strategy on one index card taped to the till. 'Open a shop only when the last one pays for it,' it reads. Eleven years later he runs forty, and has never borrowed a rupee."},
+"Salt & Ember":{f:"Every two months",pg:140,l:"Salt & Ember collects home cooking from fifteen countries. Every recipe is tested at least five times before it reaches the page.",h:["One pot, three Lebanese suppers","The night market guide to Penang","How to keep a sourdough starter alive"],x:"Start with the onions and give them longer than you think. Forty minutes on low heat turns them deep gold and sweet. Everything else in this stew, from the cumin to the lemon, depends on that patience."},
+"Paper Moon":{f:"Quarterly",pg:128,l:"Paper Moon follows artists, filmmakers and musicians at work. It favours long conversations over quick profiles.",h:["A painter's year without a studio","The film that took twenty years","Zine makers of São Paulo"],x:"The studio is a borrowed garage and the light is terrible. 'That's the point,' she says, scraping paint from a canvas she has started six times. 'If it looks good in here, it will look amazing anywhere else.'"}
+};
+const det=document.getElementById('det');
+function showDet(s,open){
+ const m=M.find(x=>slug(x)===s);if(!m){location.hash='#magazines';return}
+ const e=E[m.n];
+ det.innerHTML=`<a class="back" href="#magazines">‹ All magazines</a><div class="det"><div>${cover(m)}</div><div><div class="cat">${m.c}</div><h1>${m.n}</h1><p class="lead">${e.l}</p><div class="meta"><div><b>${e.f}</b><span>Published</span></div><div><b>${e.pg}</b><span>Pages</span></div><div><b>${m.i}</b><span>Latest issue</span></div></div><h3>Inside this issue</h3><ul>${e.h.map(t=>`<li>${t}</li>`).join('')}</ul><div class="acts"><button class="btn" id="rd">Read a preview</button><a class="btn ghost" href="#contact/${slug(m)}">Contact about ${m.n}</a></div><div class="reader" id="reader" hidden><h3>${e.h[0]}</h3><p>${e.x}</p></div></div></div><h2 class="more">More magazines</h2><div class="mini">${M.filter(x=>x!==m).slice(0,3).map(x=>`<a href="#magazine/${slug(x)}">${cover(x)}<h3>${x.n}</h3></a>`).join('')}</div>`;
+ const r=document.getElementById('reader');
+ document.getElementById('rd').onclick=()=>{r.hidden=!r.hidden};
+ if(open){r.hidden=false;setTimeout(()=>r.scrollIntoView({behavior:'smooth',block:'center'}),50)}
+}
+M.forEach(m=>topic.add(new Option(m.n)));
+const cover=(m,x="")=>m.image
+ ? `<div class="cover image v${m.v} ${x}"><img src="${m.image}" alt="${m.n} magazine cover"></div>`
+ : `<div class="cover v${m.v} ${x}" style="background:${m.bg};--fg:${m.fg};--ac:${m.ac}"><i></i><span class="is">${m.i}</span><div class="nm">${m.n}</div><div class="ln">${m.t}</div></div>`;
+document.getElementById('stack').innerHTML=[M[1],M[0],M[4]].map(m=>cover(m)).join('');
+document.getElementById('featCover').innerHTML=cover(M[0]);
+const cats=["All",...new Set(M.map(m=>m.c))],chips=document.getElementById('chips'),grid=document.getElementById('grid');
+let cur="All";
+function draw(){
+ chips.innerHTML=cats.map(c=>`<button class="chip ${c===cur?'on':''}" aria-pressed="${c===cur}" data-c="${c}">${c}</button>`).join('');
+ grid.innerHTML=M.filter(m=>cur==="All"||m.c===cur).map(m=>`<article class="item"><a href="#magazine/${slug(m)}" aria-label="${m.n}">${cover(m)}</a><h3><a href="#magazine/${slug(m)}">${m.n}</a></h3><div class="cat">${m.c}</div><p>${m.d}</p><div class="row"><span class="b"><a class="lk pri" href="#magazine/${slug(m)}/read">Read</a><a class="lk" href="#contact/${slug(m)}">Contact</a></span></div></article>`).join('');
+}
+chips.onclick=e=>{const c=e.target.dataset.c;if(c){cur=c;draw()}};
+
+draw();
+function route(){
+ const [h,s,a]=(location.hash||'#home').slice(1).split('/'),id=['home','magazines','contact','magazine'].includes(h)?h:'home',pg=id==='magazine'?'detail':id,nv=id==='magazine'?'magazines':id;
+ if(id==='magazine')showDet(s,a==='read');
+ if(id==='contact')document.getElementById('topic').value=(M.find(m=>slug(m)===s)||{n:'General question'}).n;
+ document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on',p.id===pg));
+ document.querySelectorAll('nav a[data-p]').forEach(a=>{a.classList.toggle('on',a.dataset.p===nv);a.toggleAttribute('aria-current',a.dataset.p===nv)});
+ scrollTo(0,0);
+}
+addEventListener('hashchange',route);route();
+document.getElementById('form').onsubmit=e=>{e.preventDefault();document.getElementById('ok').style.display='block';e.target.reset()};
+</script>
+</body>
+</html>
