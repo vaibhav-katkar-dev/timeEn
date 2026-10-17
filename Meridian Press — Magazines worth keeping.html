@@ -7,11 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ---------- Colors (light + dark) ---------- */
-:root{--bg:#EDEFF0;--card:#F7F8F8;--ink:#16201C;--mute:#5B6762;--line:#CBD1CE;--deep:#14342B;--brass:#A8802F;--on-deep:#EDEFF0;
+:root{--bg:#EDEFF0;--card:#F7F8F8;--ink:#16201C;--mute:#5B6762;--line:#CBD1CE;--deep:#14342B;--brass:#A8802F;--on-deep:#EDEFF0;color-scheme:light;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1613;--card:#17211D;--ink:#E8ECEA;--mute:#98A39E;--line:#2A3731;--deep:#0A211A;--brass:#D2AA5A}}
-:root[data-theme="dark"]{--bg:#0F1613;--card:#17211D;--ink:#E8ECEA;--mute:#98A39E;--line:#2A3731;--deep:#0A211A;--brass:#D2AA5A}
-
 /* ---------- Base ---------- */
 html{scroll-behavior:smooth;scroll-padding-top:100px}
 *,*:before,*:after{box-sizing:inherit}
@@ -25,7 +22,7 @@ section{padding:80px 0;border-top:1px solid var(--line)}
 /* ---------- Header ---------- */
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;justify-content:space-between;height:82px}
-.brand-mark{display:block;height:62px;width:auto;max-width:240px;object-fit:contain}
+.brand-mark{display:block;height:62px;width:auto;max-width:240px;max-height:100%;object-fit:contain}
 nav{display:flex;gap:28px}
 nav a{text-decoration:none;font-weight:500;font-size:15px;color:var(--mute);padding:6px 0;border-bottom:2px solid transparent}
 nav a:hover{color:var(--ink);border-color:var(--brass)}
@@ -112,7 +109,8 @@ body{font-size:16px}
 .wrap{padding:0 18px}
 .brand-mark{height:48px;max-width:180px}
 nav{gap:16px}nav a{font-size:14px}
-.bar{height:70px}
+.bar{height:auto;min-height:70px;padding-top:10px;padding-bottom:10px;gap:8px;flex-wrap:wrap}
+nav{width:100%;justify-content:center;flex-wrap:wrap}
 .acts .btn{width:100%;text-align:center}
 }
 </style>

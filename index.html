@@ -19,31 +19,10 @@
             --deep: #14342B;
             --brass: #A8802F;
             --on-deep: #EDEFF0;
+            color-scheme: light;
             box-sizing: border-box;
             padding-top: env(safe-area-inset-top, 0px);
             padding-bottom: env(safe-area-inset-bottom, 0px)
-        }
-
-        @media (prefers-color-scheme:dark) {
-            :root:not([data-theme="light"]) {
-                --bg: #0F1613;
-                --card: #17211D;
-                --ink: #E8ECEA;
-                --mute: #98A39E;
-                --line: #2A3731;
-                --deep: #0A211A;
-                --brass: #D2AA5A
-            }
-        }
-
-        :root[data-theme="dark"] {
-            --bg: #0F1613;
-            --card: #17211D;
-            --ink: #E8ECEA;
-            --mute: #98A39E;
-            --line: #2A3731;
-            --deep: #0A211A;
-            --brass: #D2AA5A
         }
 
         /* ---------- Base ---------- */
@@ -94,6 +73,14 @@
             border-top: 1px solid var(--line)
         }
 
+        .page-view {
+            display: none
+        }
+
+        .page-view.active {
+            display: block
+        }
+
         /* ---------- Header ---------- */
         header {
             position: sticky;
@@ -115,6 +102,7 @@
             height: 62px;
             width: auto;
             max-width: 240px;
+            max-height: 100%;
             object-fit: contain
         }
 
@@ -135,6 +123,16 @@
         nav a:hover {
             color: var(--ink);
             border-color: var(--brass)
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 1px solid var(--line);
+            background: var(--card);
+            color: var(--ink);
+            padding: 10px 12px;
+            font: 600 14px Figtree, sans-serif;
+            cursor: pointer
         }
 
         /* ---------- Buttons ---------- */
@@ -435,6 +433,10 @@
             gap: 80px
         }
 
+        .contact form {
+            min-width: 0
+        }
+
         .info div {
             padding: 22px 0;
             border-top: 1px solid var(--line)
@@ -494,6 +496,36 @@
             opacity: .85
         }
 
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 1
+        }
+
+        .social-links a {
+            display: grid;
+            width: 36px;
+            height: 36px;
+            place-items: center;
+            color: var(--on-deep);
+            border: 1px solid rgba(237, 239, 240, .45);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background .2s, color .2s
+        }
+
+        .social-links a:hover {
+            background: var(--on-deep);
+            color: var(--deep)
+        }
+
+        .social-links svg {
+            width: 17px;
+            height: 17px;
+            fill: currentColor
+        }
+
         /* ---------- Mobile ---------- */
         @media (max-width:900px) {
 
@@ -533,20 +565,68 @@
             }
 
             nav {
-                gap: 16px
+                position: fixed;
+                inset: 0 0 0 auto;
+                z-index: 20;
+                display: flex;
+                width: min(82vw, 320px);
+                height: 100dvh;
+                padding: 96px 28px 28px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+                background: var(--card);
+                box-shadow: -12px 0 32px rgba(0, 0, 0, .18);
+                transform: translateX(100%);
+                transition: transform .2s ease
             }
 
             nav a {
-                font-size: 14px
+                padding: 14px 4px;
+                font-size: 16px
+            }
+
+            nav.open {
+                transform: translateX(0)
+            }
+
+            .menu-toggle {
+                display: block;
+                position: relative;
+                z-index: 30
             }
 
             .bar {
-                height: 70px
+                height: auto;
+                min-height: 70px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                gap: 8px;
+                flex-wrap: wrap
             }
 
             .acts .btn {
                 width: 100%;
                 text-align: center
+            }
+
+            .contact {
+                gap: 40px
+            }
+
+            .contact .info div {
+                padding: 18px 0
+            }
+
+            input,
+            select,
+            textarea {
+                font-size: 16px
+            }
+
+            footer .wrap {
+                align-items: flex-start;
+                flex-direction: column
             }
         }
     </style>
@@ -558,82 +638,88 @@
         <div class="wrap bar">
             <a href="#home" aria-label="TimesEN home"><img class="brand-mark" src="logo.png"
                     alt="TimesEN — The Global Perspective"></a>
-            <nav aria-label="Main">
+            <nav id="main-navigation" aria-label="Main">
                 <a href="#home">Home</a>
                 <a href="#magazines">Magazines</a>
                 <a href="#contact">Contact</a>
             </nav>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation">
+                Menu
+            </button>
         </div>
     </header>
 
     <main>
 
         <!-- ================= HOME ================= -->
-        <div id="home" class="wrap hero">
-            <h1>Magazines made to be <em>kept.</em></h1>
-            <p>Six independent titles on design, travel, science, business, food and culture. Written slowly, printed on
-                heavy paper, delivered to your door.</p>
-            <div class="acts">
-                <a class="btn" href="#magazines">Browse magazines</a>
-                <a class="btn ghost" href="#contact">Contact us</a>
+        <div id="home-page" class="page-view">
+            <div id="home" class="wrap hero">
+                <h1>Magazines made to be <em>kept.</em></h1>
+                <p>Six independent titles on design, travel, science, business, food and culture. Written slowly, printed on
+                    heavy paper, delivered to your door.</p>
+                <div class="acts">
+                    <a class="btn" href="#magazines">Browse magazines</a>
+                    <a class="btn ghost" href="#contact">Contact us</a>
+                </div>
             </div>
+
+            <!-- This month -->
+            <section>
+                <div class="wrap feat">
+                    <div class="cover image"><img src="1.jpeg" alt="Aurelian magazine cover"></div>
+                    <div>
+                        <h2>Leadership with Purpose: One of the Most Influential Business Leaders to Watch in 2026</h2>
+                        <p>Twelve architects on why the oldest building material still beats everything new. Includes a
+                            40-page photo essay from quarries in Portugal, India and Vermont.</p>
+                        <div class="meta">
+                            <div><b>148</b><span>Pages</span></div>
+                            <div><b>Oct 2026</b><span>Issue 42</span></div>
+                            <div><b>Monthly</b><span>Published</span></div>
+                        </div>
+                        <a class="btn" href="#aurelian">About Aurelian</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why readers stay -->
+            <section>
+                <div class="wrap">
+                    <div class="sh">
+                        <h2>Why readers stay</h2>
+                        <p>We publish fewer issues so every one has to earn its place on your shelf.</p>
+                    </div>
+                    <div class="vals">
+                        <div>
+                            <h3>Long reads, no filler</h3>
+                            <p>Features run 3,000 words or more. We commission a story only when we have something new to
+                                say.</p>
+                        </div>
+                        <div>
+                            <h3>Printed to last</h3>
+                            <p>Sewn bindings, uncoated stock and soy-based inks. Our issues still open flat after ten years.
+                            </p>
+                        </div>
+                        <div>
+                            <h3>Pay for the work</h3>
+                            <p>Every writer, photographer and illustrator is paid within 30 days. No ads buy their way into
+                                a story.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="band">
+                <div class="wrap">
+                    <h2>Find the title that fits you</h2>
+                    <p>Read about each magazine, preview an article, or write to us with a question.</p>
+                    <a class="btn" href="#magazines">Explore magazines</a>
+                </div>
+            </section>
         </div>
 
-        <!-- This month -->
-        <section>
-            <div class="wrap feat">
-                <div class="cover image"><img src="1.jpeg" alt="Aurelian magazine cover"></div>
-                <div>
-                    <h2>Leadership with Purpose: One of the Most Influential Business Leaders to Watch in 2026</h2>
-                    <p>Twelve architects on why the oldest building material still beats everything new. Includes a
-                        40-page photo essay from quarries in Portugal, India and Vermont.</p>
-                    <div class="meta">
-                        <div><b>148</b><span>Pages</span></div>
-                        <div><b>Oct 2026</b><span>Issue 42</span></div>
-                        <div><b>Monthly</b><span>Published</span></div>
-                    </div>
-                    <a class="btn" href="#aurelian">About Aurelian</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why readers stay -->
-        <section>
-            <div class="wrap">
-                <div class="sh">
-                    <h2>Why readers stay</h2>
-                    <p>We publish fewer issues so every one has to earn its place on your shelf.</p>
-                </div>
-                <div class="vals">
-                    <div>
-                        <h3>Long reads, no filler</h3>
-                        <p>Features run 3,000 words or more. We commission a story only when we have something new to
-                            say.</p>
-                    </div>
-                    <div>
-                        <h3>Printed to last</h3>
-                        <p>Sewn bindings, uncoated stock and soy-based inks. Our issues still open flat after ten years.
-                        </p>
-                    </div>
-                    <div>
-                        <h3>Pay for the work</h3>
-                        <p>Every writer, photographer and illustrator is paid within 30 days. No ads buy their way into
-                            a story.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="band">
-            <div class="wrap">
-                <h2>Find the title that fits you</h2>
-                <p>Read about each magazine, preview an article, or write to us with a question.</p>
-                <a class="btn" href="#magazines">Explore magazines</a>
-            </div>
-        </section>
-
         <!-- ================= MAGAZINES ================= -->
-        <section id="magazines">
+        <section id="magazines-page" class="page-view">
+            <div id="magazines">
             <div class="wrap">
                 <div class="sh">
                     <h2>The collection</h2>
@@ -645,7 +731,7 @@
                     <div class="cover image"><img src="1.jpeg" alt="Aurelian magazine cover"></div>
                     <div>
                         <div class="cat">Design</div>
-                        <h3>Aurelian</h3>
+                        <h3>Visionary Women Executives Shaping Global Business in 2026</h3>
                         <p class="lead">Aurelian looks at the buildings, furniture and cities that shape daily life.
                             Each issue follows one theme through essays, interviews and long photo stories.</p>
                         <div class="meta">
@@ -740,7 +826,7 @@
                     <div class="cover image"><img src="3.jpeg" alt="Ledger magazine cover"></div>
                     <div>
                         <div class="cat">Business</div>
-                        <h3>Ledger</h3>
+                        <h3>The Most Iconic Business Leaders to Watch in 2026</h3>
                         <p class="lead">Ledger profiles companies that chose steady growth over hype. Each issue breaks
                             down how a real business makes decisions, with numbers shown.</p>
                         <div class="meta">
@@ -916,10 +1002,12 @@
                     </div>
                 </article> --> 
             </div>
+            </div>
         </section>
 
         <!-- ================= CONTACT ================= -->
-        <section id="contact">
+        <section id="contact-page" class="page-view">
+            <div id="contact">
             <div class="wrap">
                 <div class="sh">
                     <h2>Talk to us</h2>
@@ -956,6 +1044,7 @@
                     </form>
                 </div>
             </div>
+            </div>
         </section>
 
     </main>
@@ -964,8 +1053,78 @@
         <div class="wrap">
             <span>© 2026 Meridian Press. All rights reserved.</span>
             <span>Independent magazines, printed responsibly.</span>
+            <div class="social-links" aria-label="Social media">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 12 16.5 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 12 14.5 2.5 2.5 0 0 0 12 9.5ZM17.5 6.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M13.5 22v-8h2.75l.5-3h-3.25V9.1c0-.87.29-1.6 1.65-1.6h1.75V4.82c-.3-.04-1.34-.12-2.55-.12-2.52 0-4.25 1.54-4.25 4.37V11H7.25v3H10v8h3.5Z"/>
+                    </svg>
+                </a>
+                <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M18.9 2H22l-6.77 7.74L23.2 22h-6.24l-4.89-6.39L6.48 22H3.37l7.24-8.28L3 2h6.4l4.42 5.84L18.9 2Zm-1.1 18h1.73L8.47 3.9H6.61L17.8 20Z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M5.2 3.5A2.2 2.2 0 1 1 5.2 7.9 2.2 2.2 0 0 1 5.2 3.5ZM3.4 9.5H7V21H3.4V9.5Zm5.8 0h3.45v1.57h.05c.48-.9 1.66-1.85 3.42-1.85 3.66 0 4.34 2.4 4.34 5.52V21h-3.6v-5.54c0-1.32-.03-3.02-1.84-3.02-1.84 0-2.12 1.44-2.12 2.92V21H9.2V9.5Z"/>
+                    </svg>
+                </a>
+            </div>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            var routes = {
+                home: document.getElementById('home-page'),
+                magazines: document.getElementById('magazines-page'),
+                contact: document.getElementById('contact-page')
+            };
+            var links = document.querySelectorAll('nav a');
+            var navigation = document.getElementById('main-navigation');
+            var menuToggle = document.querySelector('.menu-toggle');
+
+            function closeMenu() {
+                navigation.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+
+            menuToggle.addEventListener('click', function () {
+                var isOpen = navigation.classList.toggle('open');
+                menuToggle.setAttribute('aria-expanded', String(isOpen));
+            });
+
+            function showRoute() {
+                var hash = window.location.hash.slice(1);
+                var route = hash === 'contact' ? 'contact' : hash === 'magazines' || (hash !== 'home' && document.getElementById(hash)) ? 'magazines' : 'home';
+                Object.keys(routes).forEach(function (name) {
+                    routes[name].classList.toggle('active', name === route);
+                });
+                links.forEach(function (link) {
+                    link.toggleAttribute('aria-current', link.getAttribute('href') === '#' + route);
+                });
+                closeMenu();
+                if (route === 'magazines' && hash !== 'magazines') {
+                    var target = document.getElementById(hash);
+                    if (target) {
+                        window.requestAnimationFrame(function () {
+                            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        });
+                    }
+                } else {
+                    window.scrollTo(0, 0);
+                }
+            }
+
+            window.addEventListener('hashchange', showRoute);
+            showRoute();
+        }());
+    </script>
 
 </body>
 
